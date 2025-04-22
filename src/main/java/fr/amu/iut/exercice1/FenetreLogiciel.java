@@ -55,30 +55,34 @@ public class FenetreLogiciel extends Application
         topBox.getChildren().addAll(menuBar, separator);
         root.setTop(topBox);
 
-        // Création du centre
-        VBox centerContent = new VBox(10);
+        // Création du centre avec un GridPane
+        GridPane centerContent = new GridPane();
+        centerContent.setVgap(10);
+        centerContent.setHgap(10);
+        centerContent.setAlignment(Pos.CENTER);
 
-        // Ajout des labels et des zones de texte
-        HBox nameBox = new HBox(10);
+        // Création des labels et des champs de texte
         Label name = new Label("Name : ");
         TextField champN = new TextField();
         champN.setMaxWidth(260);
-        nameBox.getChildren().addAll(name, champN);
-        nameBox.setAlignment(Pos.CENTER);
 
-        HBox mail = new HBox(10);
         Label email = new Label("Email :");
         TextField champE = new TextField();
         champE.setMaxWidth(260);
-        mail.getChildren().addAll(email, champE);
-        mail.setAlignment(Pos.CENTER);
 
-        HBox mdpBox = new HBox(10);
         Label mdp = new Label("Password : ");
         PasswordField champMDP = new PasswordField();
         champMDP.setMaxWidth(260);
-        mdpBox.getChildren().addAll(mdp, champMDP);
-        mdpBox.setAlignment(Pos.CENTER);
+
+        // Ajout des éléments dans le GridPane
+        centerContent.add(name, 0, 0);  // (colonne, ligne)
+        centerContent.add(champN, 1, 0);
+
+        centerContent.add(email, 0, 1);
+        centerContent.add(champE, 1, 1);
+
+        centerContent.add(mdp, 0, 2);
+        centerContent.add(champMDP, 1, 2);
 
         // Ajout des boutons submit et cancel
         HBox button = new HBox(10);
@@ -88,10 +92,10 @@ public class FenetreLogiciel extends Application
         button.getChildren().addAll(submit, cancel);
         button.setAlignment(Pos.CENTER);
 
-        // On centre tout
-        centerContent.getChildren().addAll(nameBox, mail, mdpBox, button);
-        centerContent.setAlignment(Pos.CENTER);
-        root.setCenter(centerContent);
+        VBox fin = new VBox(10);
+        fin.getChildren().addAll(centerContent, button);
+        fin.setAlignment(Pos.CENTER);
+        root.setCenter(fin);
 
         // Création du bandeau en bas
         Label texte = new Label("Ceci est un label de bas de page");
@@ -125,7 +129,7 @@ public class FenetreLogiciel extends Application
         // Création de la scène
         Scene scene = new Scene(root, 650, 550);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Exemple avec séparateurs et bordures");
+        primaryStage.setTitle("Premier exemple manipulant les conteneurs");
         primaryStage.show();
     }
 
