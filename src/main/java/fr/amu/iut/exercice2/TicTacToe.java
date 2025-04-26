@@ -1,18 +1,12 @@
 package fr.amu.iut.exercice2;
 
-import com.sun.javafx.menu.MenuItemBase;
 import javafx.application.Application;
-import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.Separator;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -26,13 +20,13 @@ public class TicTacToe extends Application
         // Création du GridPane
         GridPane ticTacToe = new GridPane();
         ticTacToe.setAlignment(Pos.CENTER);
-        ticTacToe.setHgap(10); // Espacement horizontal
-        ticTacToe.setVgap(10); // Espacement vertical
+//        ticTacToe.setHgap(10); // Espacement horizontal
+//        ticTacToe.setVgap(10); // Espacement vertical
 
         // Création du Random
         Random random = new Random();
 
-        // Tableau pour les chemins des images
+        // Charger les images
         String[] images = {
                 "exercice2/Croix.png", // 0
                 "exercice2/Rond.png", // 1
@@ -44,8 +38,9 @@ public class TicTacToe extends Application
         {
             for (int col = 0; col < 3; col++) // col est inférieur a 3 car il va de 0 à 2, col++ permet l'incrémenta
             {
-                int nombre = random.nextInt(3); // nombre random entre 0, 1 ou 2
                 Label im = new Label();
+                im.setBorder(new Border(new BorderStroke(Color.LIGHTGREY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(1)))); // Ajout des bordures
+                int nombre = random.nextInt(3); // nombre random entre 0, 1 ou 2
                 ImageView image = new ImageView(images[nombre]); // ImageView -> sous classe de Node
                 im.setGraphic(image);
                 ticTacToe.add(im, col, row); // ajout dans la colonne du GridPane
