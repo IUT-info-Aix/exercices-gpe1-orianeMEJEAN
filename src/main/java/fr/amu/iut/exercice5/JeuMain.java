@@ -64,9 +64,17 @@ public class JeuMain extends Application
                     j1.deplacerEnBas(scene.getHeight());
                     break;
                 case Z:
-                    //j2...... vers le haut;
+                    j2.deplacerEnHaut();
                     break;
-
+                case Q:
+                    j2.deplacerAGauche();
+                    break;
+                case S:
+                    j2.deplacerEnBas(scene.getWidth());
+                    break;
+                case D:
+                    j2.deplacerADroite(scene.getHeight());
+                    break;
             }
             if (j1.estEnCollision(j2))
                 System.out.println("Collision....");
