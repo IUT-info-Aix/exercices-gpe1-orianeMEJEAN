@@ -7,13 +7,14 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class JeuMain extends Application {
-
+public class JeuMain extends Application
+{
     private Scene scene;
     private BorderPane root;
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage)
+    {
 
         root = new BorderPane();
 
@@ -56,6 +57,12 @@ public class JeuMain extends Application {
                 case RIGHT:
                     j1.deplacerADroite(scene.getWidth());
                     break;
+                case UP:
+                    j1.deplacerEnHaut();
+                    break;
+                case DOWN:
+                    j1.deplacerEnBas(scene.getHeight());
+                    break;
                 case Z:
                     //j2...... vers le haut;
                     break;
@@ -65,6 +72,4 @@ public class JeuMain extends Application {
                 System.out.println("Collision....");
         });
     }
-
-
 }

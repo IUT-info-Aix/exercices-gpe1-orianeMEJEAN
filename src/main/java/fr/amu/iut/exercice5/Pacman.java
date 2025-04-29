@@ -3,12 +3,12 @@ package fr.amu.iut.exercice5;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
-public class Pacman extends Personnage {
-
+public class Pacman extends Personnage
+{
     private Line bouche;
 
-
-    public Pacman() {
+    public Pacman()
+    {
         super("droite", Color.BLACK, Color.YELLOW);
         bouche = new Line(LARGEUR_MOITIE_PERSONNAGE, LARGEUR_MOITIE_PERSONNAGE, (LARGEUR_MOITIE_PERSONNAGE * 2) - .5, LARGEUR_MOITIE_PERSONNAGE);
         bouche.setFill(Color.BLACK);
@@ -17,7 +17,8 @@ public class Pacman extends Personnage {
     }
 
     @Override
-    public void deplacerAGauche() {
+    public void deplacerAGauche()
+    {
         super.deplacerAGauche();
         //sens de la bouche
         bouche.setEndX(bouche.getStartX() - LARGEUR_MOITIE_PERSONNAGE + .5);
@@ -25,7 +26,8 @@ public class Pacman extends Personnage {
     }
 
     @Override
-    public void deplacerADroite(double largeurJeu) {
+    public void deplacerADroite(double largeurJeu)
+    {
         super.deplacerADroite(largeurJeu);
         //sens de la bouche
         bouche.setEndX(bouche.getStartX() + LARGEUR_MOITIE_PERSONNAGE - .5);
@@ -33,13 +35,21 @@ public class Pacman extends Personnage {
     }
 
     @Override
-    public void deplacerEnBas(double hauteurJeu) {
-        // à compléter
+    public void deplacerEnBas(double hauteurJeu)
+    {
+        super.deplacerEnBas(hauteurJeu);
+        //sens de la bouche
+        bouche.setEndX(bouche.getStartX());
+        bouche.setEndY(bouche.getStartY() + LARGEUR_MOITIE_PERSONNAGE - .5);
     }
 
     @Override
-    public void deplacerEnHaut() {
-        // à compléter
+    public void deplacerEnHaut()
+    {
+        super.deplacerEnHaut();
+        //sens de la bouche
+        bouche.setEndX(bouche.getStartX());
+        bouche.setEndY(bouche.getStartY() - LARGEUR_MOITIE_PERSONNAGE - .5);
     }
 
 }
