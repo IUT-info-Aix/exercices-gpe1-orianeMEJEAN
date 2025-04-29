@@ -53,11 +53,13 @@ public class JeuMain extends Application
     private void deplacer(Personnage j1, Personnage j2)
     {
         scene.setOnKeyPressed((KeyEvent event) -> {
-            if (!jeuActif) {
+            if (!jeuActif)
+            {
                 return;
             }
 
-            switch (event.getCode()) {
+            switch (event.getCode())
+            {
                 case LEFT:
                     j1.deplacerAGauche();
                     break;
