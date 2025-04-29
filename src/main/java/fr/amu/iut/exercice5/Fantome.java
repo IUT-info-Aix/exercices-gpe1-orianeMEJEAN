@@ -4,6 +4,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
+import java.util.ArrayList;
+
 public class Fantome extends Personnage
 {
     private Rectangle basCorps;
@@ -36,9 +38,9 @@ public class Fantome extends Personnage
     }
 
     @Override
-    public void deplacerAGauche()
+    public void deplacerAGauche(ArrayList<Obstacle> obstacles)
     {
-        super.deplacerAGauche();
+        super.deplacerAGauche(obstacles);
         retineGauche.setCenterX(oeilGauche.getCenterX() - 1);
         retineGauche.setCenterY(oeilGauche.getCenterY());
 
@@ -47,9 +49,9 @@ public class Fantome extends Personnage
     }
 
     @Override
-    public void deplacerADroite(double largeurJeu)
+    public void deplacerADroite(double largeurJeu, ArrayList<Obstacle> obstacles)
     {
-        super.deplacerADroite(largeurJeu);
+        super.deplacerADroite(largeurJeu, obstacles);
         retineGauche.setCenterX(oeilGauche.getCenterX() + 1);
         retineGauche.setCenterY(oeilGauche.getCenterY());
 
@@ -58,8 +60,8 @@ public class Fantome extends Personnage
     }
 
     @Override
-    public void deplacerEnHaut() {
-        super.deplacerEnHaut();
+    public void deplacerEnHaut(ArrayList<Obstacle> obstacles) {
+        super.deplacerEnHaut(obstacles);
         retineGauche.setCenterX(oeilGauche.getCenterX());
         retineGauche.setCenterY(oeilGauche.getCenterY() - 1);
 
@@ -68,9 +70,9 @@ public class Fantome extends Personnage
     }
 
     @Override
-    public void deplacerEnBas(double hauteurJeu)
+    public void deplacerEnBas(double hauteurJeu, ArrayList<Obstacle> obstacles)
     {
-        super.deplacerEnBas(hauteurJeu);
+        super.deplacerEnBas(hauteurJeu, obstacles);
         retineGauche.setCenterX(oeilGauche.getCenterX());
         retineGauche.setCenterY(oeilGauche.getCenterY() + 1);
 

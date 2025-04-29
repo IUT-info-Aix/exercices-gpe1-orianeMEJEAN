@@ -4,6 +4,9 @@ import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class Personnage extends Group
 {
     protected final static double LARGEUR_MOITIE_PERSONNAGE = 10;
@@ -19,7 +22,7 @@ class Personnage extends Group
         getChildren().add(corps);
     }
 
-    public void deplacerAGauche()
+    public void deplacerAGauche(ArrayList<Obstacle> obstacles)
     {
         //    ****
         //   *    *
@@ -36,9 +39,13 @@ class Personnage extends Group
         {
             direction = "gauche";
         }
+        if (collisionAvecObstacle(obstacles))
+        {
+            setLayoutX(getLayoutX() + LARGEUR_PERSONNAGE);
+        }
     }
 
-    public void deplacerADroite(double largeurJeu)
+    public void deplacerADroite(double largeurJeu, ArrayList<Obstacle> obstacles)
     {
         //    ****
         //   *    *
@@ -54,9 +61,13 @@ class Personnage extends Group
         {
             direction = "droite";
         }
+        if (collisionAvecObstacle(obstacles))
+        {
+            setLayoutX(getLayoutX() - LARGEUR_PERSONNAGE);
+        }
     }
 
-    public void deplacerEnBas(double hauteurJeu)
+    public void deplacerEnBas(double hauteurJeu, ArrayList<Obstacle> obstacles)
     {
         //    *****
         //   *     *
@@ -71,9 +82,13 @@ class Personnage extends Group
         {
             direction = "bas";
         }
+        if (collisionAvecObstacle(obstacles))
+        {
+            setLayoutY(getLayoutY() - LARGEUR_PERSONNAGE);
+        }
     }
 
-    public void deplacerEnHaut()
+    public void deplacerEnHaut(ArrayList<Obstacle> obstacles)
     {
         //    *****
         //   *  |  *
@@ -88,6 +103,10 @@ class Personnage extends Group
         {
             direction = "haut";
         }
+        if (collisionAvecObstacle(obstacles))
+        {
+            setLayoutY(getLayoutY() + LARGEUR_PERSONNAGE);
+        }
     }
 
     boolean estEnCollision(Personnage autrePersonnage)
@@ -96,4 +115,15 @@ class Personnage extends Group
                 || autrePersonnage.getBoundsInParent().contains(getBoundsInParent());
     }
 
+    boolean collisionAvecObstacle(List<Obstacle> obstacles)
+    {
+        for (Obstacle obstacle : obstacles)
+        {
+            if (this.getBoundsInParent().contains(obstacle.getBoundsInParent()) || obstacle.getBoundsInParent().contains(getBoundsInParent()))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }
