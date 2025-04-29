@@ -2,6 +2,7 @@ package fr.amu.iut.exercice5;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -11,6 +12,7 @@ public class JeuMain extends Application
 {
     private Scene scene;
     private BorderPane root;
+    private boolean jeuActif = true;
 
     @Override
     public void start(Stage primaryStage)
@@ -48,8 +50,13 @@ public class JeuMain extends Application
      * @param j1
      * @param j2
      */
-    private void deplacer(Personnage j1, Personnage j2) {
+    private void deplacer(Personnage j1, Personnage j2)
+    {
         scene.setOnKeyPressed((KeyEvent event) -> {
+            if (!jeuActif) {
+                return;
+            }
+
             switch (event.getCode()) {
                 case LEFT:
                     j1.deplacerAGauche();
@@ -77,7 +84,15 @@ public class JeuMain extends Application
                     break;
             }
             if (j1.estEnCollision(j2))
+            {
                 System.out.println("Collision....");
+                jeuActif = false;
+
+                // Affichage du "Game Over"
+                Label label = new Label("Game Over...");
+                label.setStyle("-fx-font-size: 36px; -fx-text-fill: #873333; -fx-alignment: center;");
+                root.setCenter(label);
+            }
         });
     }
 }
