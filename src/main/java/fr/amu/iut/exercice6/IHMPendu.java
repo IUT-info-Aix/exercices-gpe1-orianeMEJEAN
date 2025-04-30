@@ -26,7 +26,7 @@ public class IHMPendu extends Application
     private boolean partieFinie;
 
     @Override
-    public void start(Stage primaryStage)
+    public void start(Stage primaryStage) throws Exception
     {
         dico = new Dico();
         labelVies = new Label();
