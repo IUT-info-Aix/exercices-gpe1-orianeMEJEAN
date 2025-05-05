@@ -11,11 +11,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class CustomButton extends Parent {
-
+public class CustomButton extends Parent
+{
     private ImageView image;
 
-    public CustomButton() {
+    public CustomButton()
+    {
         StackPane st = new StackPane();
         image = new ImageView(new Image("exercice9/Rond.png"));
         Label label = new Label("Clic");
@@ -26,7 +27,8 @@ public class CustomButton extends Parent {
         this.getChildren().add(st);
     }
 
-    public void addOnMousePressed(EventHandler<MouseEvent> eventHandler) {
+    public void addOnMousePressed(EventHandler<MouseEvent> eventHandler)
+    {
         image.setOnMousePressed(eventHandler);
     }
 
