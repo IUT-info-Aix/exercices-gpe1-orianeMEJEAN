@@ -8,19 +8,25 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 
-public class Conteneurs extends Application {
-    public static void main(String[] args) {
+public class Conteneurs extends Application
+{
+    public static void main(String[] args)
+    {
         launch(args);
     }
 
     @Override
-    public void start(Stage stage) {
-        try {
+    public void start(Stage stage)
+    {
+        try
+        {
             BorderPane root = FXMLLoader.load(getClass().getClassLoader().getResource("exercice10/ConteneursView.fxml"));
             stage.setScene(new Scene(root));
             stage.setTitle("Premier exemple manipulant les conteneurs");
             stage.show();
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
         }
     }
