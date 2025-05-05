@@ -136,7 +136,7 @@ public class IHMPendu extends Application
 
         if (nbVie == 0)
         {
-            labelVies.setText("Tu as été pendu... Le mot était : " + motADeviner);
+            labelVies.setText("As-tu vraiment essayé ? Le mot était : " + motADeviner);
             partieFinie = true;
         }
         else if (motCache.toString().equals(motADeviner))
