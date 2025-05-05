@@ -32,8 +32,8 @@ public class ConteneursControl
     @FXML
     private Button b3;
 
-//    @FXML
-//    private BorderPane root;
+    @FXML
+    private BorderPane root;
 
     @FXML
     private void Submit()
@@ -51,19 +51,19 @@ public class ConteneursControl
         passwordField.clear();
     }
 
-//    @FXML
-//    private void theme1()
-//    {
-//        root.setStyle("-fx-background-color: #f0f8ff;");
-//    }
-//
-//    @FXML
-//    private void theme2() {
-//        root.setStyle("-fx-background-color: #fff5e6;");
-//    }
-//
-//    @FXML
-//    private void theme3() {
-//        root.setStyle("-fx-background-color: #1e1e1e;");
-//    }
+    @FXML
+    private void theme1() {
+        root.setStyle("-fx-background-color: #737373;");
+    }
+
+    @FXML
+    private void theme2() {
+        root.setStyle("-fx-background-color: #ddc091;");
+    }
+
+    @FXML
+    private void theme3() {
+        root.setStyle("-fx-background-color: #a0e1ce;");
+    }
+
 }
