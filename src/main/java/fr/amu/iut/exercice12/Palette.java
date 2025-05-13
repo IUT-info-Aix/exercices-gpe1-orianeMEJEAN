@@ -1,6 +1,8 @@
-package fr.amu.iut.exercice2;
+package fr.amu.iut.exercice12;
 
 import javafx.application.Application;
+import javafx.beans.binding.Bindings;
+import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -35,7 +37,8 @@ public class Palette extends Application {
     private EventHandler<ActionEvent> gestionnaireEvenement;
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage)
+    {
         root = new BorderPane();
 
         texteDuHaut = new Label();
@@ -54,12 +57,35 @@ public class Palette extends Application {
         bas.getChildren().addAll(boutons, texteDuBas);
         bas.setAlignment(Pos.CENTER_RIGHT);
 
-        vert = new CustomButton("Vert", "#31BCA4");
-        rouge = new CustomButton("Rouge", "#F21411");
-        bleu = new CustomButton("Bleu", "#3273A4");
+        vert = new CustomButton("Vert", "#228B22");
+        rouge = new CustomButton("Rouge", "#CC0132");
+        bleu = new CustomButton("Bleu", "#6B9AAF");
+
+        // Listener
+        ChangeListener<Number> nbClicsListener = (observable, oldValue, newValue) -> {
+            if (sourceOfEvent != null)
+            {
+                // Texte haut
+                texteDuHaut.setText(sourceOfEvent.getText() + " est roi depuis " +
+                        sourceOfEvent.getNbClics() + " ans");
+
+                // Style panneau
+                panneau.setStyle("-fx-background-color: " + sourceOfEvent.getCouleur());
+
+                // Texte bas
+                int totalClics = vert.getNbClics() + rouge.getNbClics() + bleu.getNbClics();
+                texteDuBas.setText("Nombre total de clics : " + totalClics + " ");
+            }
+        };
+
+        // Association des listener
+        vert.nbClicsProperty().addListener(nbClicsListener);
+        rouge.nbClicsProperty().addListener(nbClicsListener);
+        bleu.nbClicsProperty().addListener(nbClicsListener);
 
         gestionnaireEvenement = (event) -> {
             sourceOfEvent = (CustomButton) event.getSource();
+            sourceOfEvent.incrementerCompteur();
         };
 
         vert.setOnAction(gestionnaireEvenement);
@@ -70,13 +96,11 @@ public class Palette extends Application {
 
         root.setCenter(panneau);
         root.setTop(texteDuHaut);
-        root.setBottom(boutons);
+        root.setBottom(bas);
 
         Scene scene = new Scene(root);
 
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
 }
-
