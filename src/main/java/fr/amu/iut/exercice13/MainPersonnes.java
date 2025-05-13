@@ -12,6 +12,8 @@ public class MainPersonnes
 
     private static ListChangeListener<Personne> unChangementListener;
 
+    private static ListChangeListener<Personne> plusieursChangementsListener;
+
     public static void main(String[] args)
     {
         lesPersonnes = FXCollections.observableArrayList
@@ -22,7 +24,29 @@ public class MainPersonnes
                 }
         );
 
-        unChangementListener = change -> {
+//        unChangementListener = change -> {
+//            while (change.next())
+//            {
+//                if (change.wasAdded())
+//                {
+//                    for (Personne p : change.getAddedSubList())
+//                    {
+//                        System.out.println("Ajout de : " + p.getNom());
+//                    }
+//                }
+//
+//                if (change.wasRemoved())
+//                {
+//                    for (Personne p : change.getRemoved())
+//                    {
+//                        System.out.println("Suppression de : " + p.getNom());
+//                    }
+//                }
+//            }
+//        };
+
+        plusieursChangementsListener = change ->
+        {
             while (change.next())
             {
                 if (change.wasAdded())
@@ -41,6 +65,7 @@ public class MainPersonnes
                     }
                 }
             }
+            System.out.println("Fin du traitement : Changement Multiple");
         };
 
         lesPersonnes.addListener((ListChangeListener<Personne>) change -> {
@@ -58,10 +83,11 @@ public class MainPersonnes
             }
         });
 
-        lesPersonnes.addListener(unChangementListener);
+        lesPersonnes.addListener(plusieursChangementsListener);
         //question1();
         //question2();
-        question3();
+        //question3();
+        question5();
     }
 
     public static void question1()
@@ -105,7 +131,7 @@ public class MainPersonnes
 
         for (Personne p : lesPersonnes)
         {
-            p.setAge(p.getAge() + 10);
+            p.setAge(p.getAge() + 1);
         }
         lesPersonnes.removeAll(p1, p2);
     }
