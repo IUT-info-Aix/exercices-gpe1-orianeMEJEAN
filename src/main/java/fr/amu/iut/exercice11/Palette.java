@@ -153,6 +153,6 @@ public class Palette extends Application {
                 ))
         );
 
-        texteDuBas.styleProperty().bind(Bindings.concat("-fx-text-color-fill: ", couleurPanneau));
+        texteDuBas.styleProperty().bind(Bindings.concat("-fx-text-fill: ", couleurPanneau));
     }
 }
