@@ -18,7 +18,8 @@ public class MainPersonnes
 
         unChangementListener = change ->
         {
-            while (change.next()) {
+            while (change.next())
+            {
                 if (change.wasAdded())
                 {
                     for (Personne p : change.getAddedSubList())
@@ -26,10 +27,20 @@ public class MainPersonnes
                         System.out.println("Ajout de : " + p.getNom());
                     }
                 }
+
+                if (change.wasRemoved())
+                {
+                    for (Personne p : change.getRemoved())
+                    {
+                        System.out.println("Suppression de : " + p.getNom());
+                    }
+                }
             }
         };
+
         lesPersonnes.addListener(unChangementListener);
-        question1();
+        //question1();
+        question2();
     }
 
     public static void question1()
