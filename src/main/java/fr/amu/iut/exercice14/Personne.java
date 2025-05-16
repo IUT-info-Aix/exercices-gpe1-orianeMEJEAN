@@ -11,6 +11,10 @@ public class Personne
     private IntegerProperty age;
     private StringProperty villeDeNaissance;
 
+    public StringProperty villeDeNaissanceProperty() {
+        return villeDeNaissance;
+    }
+
     public Personne(String nom, int age)
     {
         this.nom = nom;
@@ -26,6 +30,11 @@ public class Personne
     public void setVilleDeNaissance(String ville)
     {
         villeDeNaissance.setValue(ville);
+    }
+
+    public String getVilleDeNaissance()
+    {
+        return villeDeNaissance.get();
     }
 
     public int getAge()
