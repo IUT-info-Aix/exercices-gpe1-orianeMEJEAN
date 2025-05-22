@@ -1,5 +1,6 @@
 package fr.amu.iut.exercice14;
 
+import javafx.beans.Observable;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.IntegerBinding;
 import javafx.beans.property.IntegerProperty;
@@ -20,7 +21,7 @@ public class MainPersonnes
     public static void main(String[] args)
     {
         // Observation sur la propriété age
-        lesPersonnes = new SimpleListProperty<>(FXCollections.observableArrayList(personne -> new javafx.beans.Observable[]{personne.ageProperty(), personne.villeDeNaissanceProperty()}));
+        lesPersonnes = new SimpleListProperty<>(FXCollections.observableArrayList(personne -> new Observable[]{personne.ageProperty(), personne.villeDeNaissanceProperty()}));
         ageMoyen = new SimpleIntegerProperty(0);
         nbParisiens = new SimpleIntegerProperty(0);
 
