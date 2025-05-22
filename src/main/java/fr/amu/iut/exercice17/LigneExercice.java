@@ -4,10 +4,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.HBox;
 
-import javafx.beans.binding.Bindings;
-import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -26,13 +23,8 @@ public class LigneExercice extends HBox
         setSpacing(10);
         setPadding(new Insets(5));
 
-        // À compléter
-
-        getChildren().addAll(enonce, reponse);
-
         exercice = new Exercice();
-        enonce.setText(exercice.getEnonce());
-
+        enonce = new Label(exercice.getEnonce());
 
         reponse = new TextField();
         // L'objet TextFormatter suivant permet de restreindre le texte aux chiffres
@@ -45,9 +37,11 @@ public class LigneExercice extends HBox
         });
 
         reponse.setTextFormatter(textFormatter);
-        // ici mettre la bonne taille du TextField
+        reponse.setPrefWidth(60);
 
         IntegerProperty intReponse = new SimpleIntegerProperty();
         reponse.textProperty().bindBidirectional(intReponse, new NumberStringConverter());
+
+        getChildren().addAll(enonce, reponse);
     }
 }
