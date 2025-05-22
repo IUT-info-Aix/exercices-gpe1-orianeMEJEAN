@@ -55,13 +55,13 @@ public class ConvertisseurTemperatures extends Application
         Label fahrenheitL = new Label("°F");
         fahrenheitL.setStyle("-fx-font-weight: bold");
 
-        // Liaison des sliders avec leurs propriétés respectives
+        // Mise a jour de la propriété a chaque mouvement du curseur
         slideC.valueProperty().bindBidirectional(celsius);
         slideF.valueProperty().bindBidirectional(fahrenheit);
 
         // Binding bidirectionnel
-        celsius.addListener((obs, oldVal, newVal) -> fahrenheit.set(newVal.doubleValue() * 9 / 5 + 32));
-        fahrenheit.addListener((obs, oldVal, newVal) -> celsius.set((newVal.doubleValue() - 32) * 5 / 9));
+        celsius.addListener((observater, oldVal, newVal) -> fahrenheit.set(newVal.doubleValue() * 9 / 5 + 32));
+        fahrenheit.addListener((observater, oldVal, newVal) -> celsius.set((newVal.doubleValue() - 32) * 5 / 9));
 
         // Liaison bidirectionnelle
         Bindings.bindBidirectional(celsiusF.textProperty(), slideC.valueProperty(), new NumberStringConverter());
